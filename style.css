@@ -1,0 +1,104 @@
+/* Estilo general de la página */
+body {
+    font-size: 1.2em; /* Tamaño de fuente */
+    display: grid; /* Utiliza una cuadrícula */
+    min-height: 100vh; /* Altura mínima de la página */
+    justify-content: center; /* Centra horizontalmente */
+    align-content: center; /* Centra verticalmente */
+    background: black; /* Fondo negro */
+}
+
+/* Estilo del corazón */
+.heart {
+    --size: 200px; /* Variable para tamaño del corazón */
+    --color: red; /* Variable para color del corazón */
+    position: relative; /* Posición relativa */
+    transform: rotate(45deg); /* Rotación de 45 grados */
+    animation: beat 1s infinite alternate ease-in-out; /* Animación de latido */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Animación de latido del corazón */
+@keyframes beat {
+    to {
+        transform: rotate(45deg) scale(1.05); /* Transformación y escala */
+        -webkit-box-shadow: -12px 12px 5px -8px rgba(204,6,135,0.36);
+        -moz-box-shadow: -12px 12px 5px -8px rgba(204,6,135,0.36);
+        box-shadow: -12px 12px 5px -8px rgba(204,6,135,0.36);
+
+    }
+}
+
+/* Estilo de los elementos del corazón */
+.heart,
+.heart::before,
+.heart::after {
+    width: var(--size); /* Ancho del corazón */
+    height: var(--size); /* Alto del corazón */
+    background: var(--color); /* Color del corazón */
+}
+
+/* Pseudo-elementos del corazón */
+.heart::before,
+.heart::after {
+    content: ''; /* Contenido vacío */
+    display: block; /* Mostrar como bloque */
+    border-radius: 50%; /* Borde redondeado */
+}
+
+/* Posicionamiento de los pseudo-elementos */
+.heart::before {
+    margin-top: calc(var(--size) * -.5); /* Margen superior */
+}
+
+.heart::after {
+    margin-top: calc(var(--size) * -.5); /* Margen superior */
+    margin-left: calc(var(--size) * -.5); /* Margen izquierdo */
+}
+
+
+/* Estilo de la flecha */
+.arrow {
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* Arriba al 50% */
+    left: -100px; /* Izquierda a -100px */
+    width: 400px; /* Ancho */
+    height: 5px; /* Altura */
+    background: white; /* Fondo blanco */
+    animation: shoot 4s infinite; /* Animación de movimiento */
+}
+
+/* Pseudo-elementos de la flecha */
+.arrow::before, .arrow::after {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posición absoluta */
+    width: 20px; /* Ancho */
+    height: 20px; /* Altura */
+    background: white; /* Fondo blanco */
+}
+
+/* Estilo de los pseudo-elementos de la flecha */
+.arrow::before {
+    top: -7.5px; /* Arriba -7.5px */
+    left: 0; /* Izquierda 0 */
+    transform: rotate(45deg); /* Rotación */
+}
+
+.arrow::after {
+    top: -7.5px; /* Arriba -7.5px */
+    right: 0; /* Derecha 0 */
+    transform: rotate(-45deg); /* Rotación */
+}
+
+/* Animación de movimiento de la flecha */
+@keyframes shoot {
+    0% {
+        left: -100px; /* Inicio a -100px */
+    }
+    50% {
+        left: 50%; /* Mitad a 50% */
+    }
+    100% {
+        left: 150%; /* Final a 150% */
+    }
+}
